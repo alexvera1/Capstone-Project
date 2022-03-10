@@ -10,7 +10,7 @@ const Application = require('../models/application')
 // to throw a custom error
 const customErrors = require('../../lib/custom_errors')
 
-// we'll use this function to send 404 when non-existant document is requested
+// we'll use this function to send 404 when non-existent document is requested
 const handle404 = customErrors.handle404
 // we'll use this function to send 401 when a user tries to modify a resource
 // that's owned by someone else
@@ -43,7 +43,7 @@ router.get('/applications/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Application.findById(req.params.id)
     .then(handle404)
-    // if `findById` is succesful, respond with 200 and "Application" JSON
+    // if `findById` is succesfull, respond with 200 and "Application" JSON
     .then(application => res.status(200).json({ application: application }))
     // if an error occurs, pass it to the handler
     .catch(next)
